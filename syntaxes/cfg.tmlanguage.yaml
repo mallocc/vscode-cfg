@@ -1,0 +1,104 @@
+fileTypes:
+  - cfg
+  - templt
+scopeName: source.cfg
+name: Cfg
+foldingStartMarker: '([{(\[])'
+foldingEndMarker: '([})\]])'
+patterns:
+  -
+    include: '#root'
+repository:
+  root:
+    patterns:    
+      -
+        include: '#comments'
+      -
+        include: '#structure'        
+      -
+        include: '#keywords'
+      -
+        include: '#expr'
+  structure:
+    patterns:
+      -
+        applyEndPatternLast: 1
+        begin: '\s*+((::|-)?(\w+))\b\s+({|\n\s*{)'
+        end: '(?<=})'
+        # beginCaptures:
+        #   '1':
+        #     name: entity.name.type
+        #   '2':
+        #     name: support.type
+        #   '3':
+        #     name: entity.name.type
+        # endCaptures:
+        #   '1':
+        #     name: entity.name.type.end
+        patterns:
+          -
+            include: '#comments'
+          -
+            include: '#structure'        
+          -
+            include: '#keywords'
+          -
+            include: '#expr'
+
+  comments:
+    patterns:
+      -
+        name: comment.line.character.cfg
+        begin: '(?<=^)\s*!'
+        end: "(?=$|\n)"
+  expr:
+    patterns:
+      -
+        name: string.interpolated.cfg
+        begin: '"'
+        end: '"'
+        patterns:
+          -
+            name: variable.parameter.cfg
+            match: '\bp[0-9]+\b'
+          -
+            name: keyword.control
+            match: '\b(If|IfElse|AddFn)\b'
+          -
+            name: variable.parameter.cfg
+            match: '\b(\w+\#\w)\b'
+          -
+            name: variable.parameter.cfg
+            match: '\b(\w+\#\#\w)\b'
+          -
+            name: constant.numeric.cfg
+            match: '([-]?[0-9]*[.]?[0-9]+)\b'
+          -    
+            match: '\b(\w+)\s*\('
+            captures:
+              '1':
+                name: entity.name.function
+          -
+            match: '\b(\w+)[.](\w+)\b'
+            captures:
+              '1':
+                name: entity.name.type
+  keywords:
+    patterns:
+      -
+        match: '\b(alias)\s+(\w+)\b'
+        captures:
+          '1':
+            name: keyword.other.cfg
+          '2':
+            name: entity.name.type
+      -
+        name: keyword.other.cfg
+        match: '\b(join|joinIf|name|alias|where|fileName|configPath|id|description|sort|onNack|key|generateSourceRef|initialSourceRef|XLator|maxOutstanding|txnService|messageType|userName|sourceId|size|type|dbType|quantity|guaranteedTick|basedOn)\b'
+        # match: '\b(\w+)\s+("|\w+|$)'
+        # captures:
+        #   '1':
+        #     name: keyword.other.cfg
+      -
+        name: constant.character.escape
+        match: '(\#include|updateQueue|customiseRecord|key|field|table|record|txnTemplate)\s*'

@@ -4,7 +4,7 @@ import * as dochelp from "./documentHelpers";
 import * as format from "./formatProvider";
 
 export function activate(context: vscode.ExtensionContext) {
-    vscode.languages.registerDocumentFormattingEditProvider("tcl", {
+    vscode.languages.registerDocumentFormattingEditProvider("cfg", {
         provideDocumentFormattingEdits(
             document: vscode.TextDocument,
             options: vscode.FormattingOptions
@@ -26,13 +26,13 @@ export function activate(context: vscode.ExtensionContext) {
             return [
                 vscode.TextEdit.replace(
                     dochelp.fullDocumentRange(document),
-                    format.formatTcl(document.getText(), "", tc, td)
+                    format.formatcfg(document.getText(), "", tc, td)
                 )
             ];
         }
     });
 
-    vscode.languages.registerDocumentRangeFormattingEditProvider("tcl", {
+    vscode.languages.registerDocumentRangeFormattingEditProvider("cfg", {
         provideDocumentRangeFormattingEdits(
             document: vscode.TextDocument,
             range: vscode.Range,
@@ -65,7 +65,7 @@ export function activate(context: vscode.ExtensionContext) {
             return [
                 vscode.TextEdit.replace(
                     selectedLines,
-                    format.formatTcl(
+                    format.formatcfg(
                         document.getText(selectedLines),
                         preIndent,
                         tc,
@@ -76,7 +76,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    context.subscriptions.push(vscode.commands.registerCommand("tcl.escapeToQuotedTcl", _ => {
+    context.subscriptions.push(vscode.commands.registerCommand("cfg.escapeToQuotedcfg", _ => {
         const editor = vscode.window.activeTextEditor;
         if (!editor) {
             return; // No open text editor
@@ -86,7 +86,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         editor.edit(builder => {
             for (const selection of selections) {
-                builder.replace(selection, format.escapeToQuotedTcl(editor.document.getText(selection)));
+                builder.replace(selection, format.escapeToQuotedcfg(editor.document.getText(selection)));
             }
         });
     }));

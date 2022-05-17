@@ -1,7 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
 
-export function escapeToQuotedTcl(input: string): string {
+export function escapeToQuotedcfg(input: string): string {
     return input
         .replace(/\\/g, '\\\\')
         .replace(/\$/g, '\\$')
@@ -40,7 +40,7 @@ export function guessPreIndentation(priorLine: vscode.TextLine, tabChar: string,
     return tabChar.repeat(preIndent) + ' '.repeat(preIndentRemainder);
 }
 
-export function formatTcl(inputCode: string, preIndent: string = '', tabChar: string = ' ', tabDepth: number = 4): string {
+export function formatcfg(inputCode: string, preIndent: string = '', tabChar: string = ' ', tabDepth: number = 4): string {
     let tabLevel = 0;
     let out: string[] = [];
     let continuation = false;

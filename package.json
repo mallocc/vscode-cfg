@@ -1,24 +1,21 @@
 {
-    "name": "tcl",
-    "displayName": "Tcl",
-    "description": "Tcl language support",
-    "version": "0.4.0",
+    "name": "cfg",
+    "displayName": "Cfg",
+    "description": "Cfg language support",
+    "version": "0.1.0",
     "keywords": [
-        "tcl",
-        "tk"
+        "Cfg",
+        "templt"
     ],
-    "publisher": "bitwisecook",
-    "bugs": {
-        "url": "https://github.com/bitwisecook/tcl.git/LICENSE"
-    },
+    "publisher": "mallocc",
     "license": "MIT",
-    "icon": "images/Tcl-powered.png",
+    "icon": "images/Fidessa.svg.png",
     "engines": {
         "vscode": "^1.45.0"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/bitwisecook/tcl.git"
+        "url": "https://github.com/bitwisecook/vscode-tcl.git"
     },
     "categories": [
         "Formatters",
@@ -27,50 +24,51 @@
         "Snippets"
     ],
     "activationEvents": [
-        "onLanguage:tcl"
+        "onLanguage:cfg"
     ],
     "main": "./out/extension.js",
     "contributes": {
         "languages": [
             {
-                "id": "tcl",
+                "id": "cfg",
                 "aliases": [
-                    "Tcl",
-                    "tcl"
+                    "Cfg",
+                    "cfg",
+                    "templt"
                 ],
                 "extensions": [
-                    ".tcl",
-                    ".test"
+                    ".cfg",
+                    ".templt"
                 ],
                 "configuration": "./language-configuration.json"
             }
         ],
         "commands": [
             {
-                "command": "tcl.escapeToQuotedTcl",
-                "title": "Escape Selections to Tcl Quoted String",
-                "category": "Tcl"
+                "command": "cfg.escapeToQuotedcfg",
+                "title": "Escape Selections to cfg Quoted String",
+                "category": "Cfg"
             }
         ],
         "grammars": [
             {
-                "language": "tcl",
-                "scopeName": "source.tcl",
-                "path": "./out/syntaxes/tcl.json"
+                "language": "cfg",
+                "scopeName": "source.cfg",
+                "path": "./out/syntaxes/cfg.json"
             }
         ],
         "snippets": [
             {
-                "language": "tcl",
-                "path": "./snippets/tcl.json"
+                "language": "cfg",
+                "path": "./snippets/cfg.json"
             }
         ]
     },
     "scripts": {
-        "vscode:prepublish": "webpack --mode production && npx js-yaml syntaxes/tcl.tmlanguage.yaml > out/syntaxes/tcl.json",
-        "webpack": "webpack --mode development && npx js-yaml syntaxes/tcl.tmlanguage.yaml > out/syntaxes/tcl.json",
-        "webpack-dev": "webpack --mode development --watch && npx js-yaml syntaxes/tcl.tmlanguage.yaml > out/syntaxes/tcl.json",
-        "test-compile": "tsc -p ./ && npx js-yaml syntaxes/tcl.tmlanguage.yaml > out/syntaxes/tcl.json",
+        "vscode:prepublish": "webpack --mode production && npx js-yaml syntaxes/cfg.tmlanguage.yaml > out/syntaxes/cfg.json",
+        "webpack": "webpack --mode development && npx js-yaml syntaxes/cfg.tmlanguage.yaml > out/syntaxes/cfg.json",
+        "webpack-dev": "webpack --mode development --watch && npx js-yaml syntaxes/cfg.tmlanguage.yaml > out/syntaxes/cfg.json",
+        "test-compile": "tsc -p ./ && npx js-yaml syntaxes/cfg.tmlanguage.yaml > out/syntaxes/cfg.json",
         "watch": "tsc -watch -p ./",
         "lint": "eslint src --ext ts",
         "pretest": "npm run compile && npm run lint",
@@ -94,6 +92,7 @@
         "webpack-cli": "^4.3.1"
     },
     "dependencies": {
-        "js-yaml": "^4.0.0"
+        "js-yaml": "^4.0.0",
+        "vsce": "^2.7.0"
     }
 }

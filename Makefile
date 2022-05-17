@@ -1,4 +1,4 @@
-BASENAME?=tcl
+BASENAME?=cfg
 NAME?=$(BASENAME)
 VERSION?=$(shell jq -r .version package.json)
 VSIX?=$(BASENAME)-$(VERSION).vsix
@@ -42,4 +42,4 @@ out/syntaxes:
 out/syntaxes/%.json: syntaxes/%.tmlanguage.yaml out/syntaxes
 	npx js-yaml $< > $@
 
-syntax: out/syntaxes/tcl.json
+syntax: out/syntaxes/cfg.json

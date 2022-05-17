@@ -1,0 +1,61 @@
+{
+	"AddFn": {
+		"prefix": "AddFn",
+		"body": [
+            "AddFn",
+            "(",
+            " '${1:name}', '${2:args}'",
+            ",",
+            " '",
+            "    $0",
+            " '",
+            ")"
+		],
+		"description": "New Function Definition"
+	},
+	"If": {
+		"prefix": "If",
+		"body": [
+            "If",
+            "(",
+			"    $0",
+			",",
+			"    ",
+			",",
+			"    ",
+            ")"
+		],
+		"description": "If Condition"
+	},
+	"IfElse": {
+		"prefix": "IfElse",
+		"body": [
+            "IfElse",
+            "(",
+			"    $0",
+			",",
+			"    ",
+			",",
+			"    ",
+			",",
+			"    ",
+			",",
+			"    ",
+            ")"
+		],
+		"description": "If Else Condition"
+	},
+	"table": {
+		"prefix": "table",
+		"body": [
+            "table",
+            "{",
+			"    name ",
+			"    alias ",
+			"    join \"\"",
+			"    where \"\"",
+            "}"
+		],
+		"description": "Basic table join"
+	}
+}

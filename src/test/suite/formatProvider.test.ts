@@ -24,7 +24,7 @@ set a 1
         const preIndent = '';
         const tabChar = ' ';
         const tabDepth = 4;
-        assert.equal(fp.formatTcl(src, preIndent, tabChar, tabDepth), dst);
+        assert.equal(fp.formatcfg(src, preIndent, tabChar, tabDepth), dst);
     });
 
     test("Simple If", function () {
@@ -41,7 +41,7 @@ if {$a eq "a"} {
         const preIndent = '';
         const tabChar = ' ';
         const tabDepth = 4;
-        assert.equal(fp.formatTcl(src, preIndent, tabChar, tabDepth), dst);
+        assert.equal(fp.formatcfg(src, preIndent, tabChar, tabDepth), dst);
     });
 
     test("Simple IfElse", function () {
@@ -62,11 +62,11 @@ if {$a eq "a"} {
         const preIndent = '';
         const tabChar = ' ';
         const tabDepth = 4;
-        assert.equal(fp.formatTcl(src, preIndent, tabChar, tabDepth), dst);
+        assert.equal(fp.formatcfg(src, preIndent, tabChar, tabDepth), dst);
     });
 
     // this form of if/elseif/else is valid in iRules
-    // but not valid Tcl
+    // but not valid cfg
     // I'm not convinced I should fix
     test("UglyIf", function () {
         const src: string = `
@@ -88,7 +88,7 @@ proc tmp {a b} {
         const preIndent = '';
         const tabChar = ' ';
         const tabDepth = 4;
-        assert.equal(fp.formatTcl(src, preIndent, tabChar, tabDepth), dst);
+        assert.equal(fp.formatcfg(src, preIndent, tabChar, tabDepth), dst);
     });
 
     test("UglyStringMap", function () {
@@ -113,7 +113,7 @@ proc escape {value} {
         const preIndent = '';
         const tabChar = ' ';
         const tabDepth = 4;
-        assert.equal(fp.formatTcl(src, preIndent, tabChar, tabDepth), dst);
+        assert.equal(fp.formatcfg(src, preIndent, tabChar, tabDepth), dst);
     });
 
     test("UglyIf2", function () {
@@ -132,7 +132,7 @@ if {aaa &&
         const preIndent = '';
         const tabChar = ' ';
         const tabDepth = 4;
-        assert.equal(fp.formatTcl(src, preIndent, tabChar, tabDepth), dst);
+        assert.equal(fp.formatcfg(src, preIndent, tabChar, tabDepth), dst);
     });
 
     test("IfElseIfElse", function () {
@@ -161,7 +161,7 @@ proc tmp {a b} {
         const preIndent = '';
         const tabChar = ' ';
         const tabDepth = 4;
-        assert.equal(fp.formatTcl(src, preIndent, tabChar, tabDepth), dst);
+        assert.equal(fp.formatcfg(src, preIndent, tabChar, tabDepth), dst);
     });
 
     test("IfElseIfElse with Comments", function () {
@@ -198,7 +198,7 @@ proc tmp {a b} {
         const preIndent = '';
         const tabChar = ' ';
         const tabDepth = 4;
-        assert.equal(fp.formatTcl(src, preIndent, tabChar, tabDepth), dst);
+        assert.equal(fp.formatcfg(src, preIndent, tabChar, tabDepth), dst);
     });
 
     test("RealRule1", function () {
@@ -273,7 +273,7 @@ when CLIENTSSL_CLIENTHELLO priority 150 {
         const preIndent = '';
         const tabChar = ' ';
         const tabDepth = 4;
-        assert.equal(fp.formatTcl(src, preIndent, tabChar, tabDepth), dst);
+        assert.equal(fp.formatcfg(src, preIndent, tabChar, tabDepth), dst);
     });
 
 });
